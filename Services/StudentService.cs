@@ -30,9 +30,14 @@ namespace TAS_ProgFrontEnd_72190339.Services
             return keluar;
         }
 
-        public Task<Student> Add(Student Student)
+        public async Task<Student> Add(Student Student)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsJsonAsync("api/Student",Student);
+            if(response.IsSuccessStatusCode){
+                return await JsonSerializer.DeserializeAsync<Student>(await response.Content.ReadAsStreamAsync());
+            }else {
+                throw new Exception("Gagal Tambah Data Emplyoee");
+            }
         }
 
         public async Task<Student> Update(Student Student)

@@ -1,19 +1,19 @@
-@page "/editstudent/{id}"
+@page "/addstudent"
 
 <EditForm Model="@Student" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
-    <h3>Edit Student</h3>
+    <h3>Create Student</h3>
     <hr/>
     <div class="form-group row">
         <label for="studentID" class="col-sm-2 col-form-label">Nim</label>
         <div class="col-sm-10">
-            <InputText id="studentID" class="form-control" @bind-Value="Student.studentID" disabled/>
+            <InputText id="studentID" class="form-control" @bind-Value="Student.studentID" placeholder="Masukkan Nim"/>
         </div>
     </div>
     <div class="form-group row">
         <label for="firstName" class="col-sm-2 col-form-label">Nama Depan</label>
         <div class="col-sm-10">
-            <InputText id="firstName" class="form-control" placeholder="Nama Depan"
+            <InputText id="firstName" class="form-control" placeholder="Masukkan Nama Depan"
             @bind-Value="Student.firstName" />
             <ValidationMessage For="@(()=>Student.firstName)" />
         </div>
@@ -21,7 +21,7 @@
     <div class="form-group row">
         <label for="lastName" class="col-sm-2 col-form-label">Nama Belakang</label>
         <div class="col-sm-10">
-            <InputText id="lastName" class="form-control" placeholder="Nama Belakang"
+            <InputText id="lastName" class="form-control" placeholder="Masukkan Nama Belakang"
             @bind-Value="Student.lastName" />
             <ValidationMessage For="@(()=>Student.lastName)" />
         </div>
