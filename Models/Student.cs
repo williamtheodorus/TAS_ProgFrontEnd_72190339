@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace TAS_ProgFrontEnd_72190339.Models
 {
     public class Student{
+        [Required]
         public string studentID { get; set; }
         [Required]
         public string lastName { get; set; }
