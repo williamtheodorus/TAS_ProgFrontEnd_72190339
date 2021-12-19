@@ -24,7 +24,7 @@ namespace TAS_ProgFrontEnd_72190339.Services
             return keluars;
         }
 
-        public async Task<Student> GetById(int id)
+        public async Task<Student> GetById(string id)
         {
             var keluar = await _httpClient.GetFromJsonAsync<Student>($"api/Student/{id}");
             return keluar;
@@ -35,14 +35,19 @@ namespace TAS_ProgFrontEnd_72190339.Services
             throw new NotImplementedException();
         }
 
-        public Task<Student> Update(int id, Student Student)
+        public async Task<Student> Update(Student Student)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PutAsJsonAsync("api/Student/",Student);
+            if(response.IsSuccessStatusCode){
+                return await JsonSerializer.DeserializeAsync<Student>(await response.Content.ReadAsStreamAsync());
+            }else{
+                throw new Exception("Gagal Update Employee");
+            }
         }
 
-        public Task<Student> Delete(int id)
+        public async Task Delete(string id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"api/Student/{id}");
         }
     }
 }

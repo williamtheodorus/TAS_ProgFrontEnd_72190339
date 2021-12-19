@@ -9,9 +9,9 @@ namespace TAS_ProgFrontEnd_72190339.Services
     public interface IStudentService
     {
         Task<IEnumerable<Student>> GetAll();
-        Task<Student> GetById(int id);
+        Task<Student> GetById(string id);
         Task<Student> Add(Student Student);
-        Task<Student> Update(int id, Student Student);
-        Task<Student> Delete(int id);
+        Task<Student> Update(Student Student);
+        Task Delete(string id);
     }
 }

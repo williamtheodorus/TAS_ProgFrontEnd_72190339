@@ -30,8 +30,8 @@ else
                     <td>
                         <a href="@($"detailsstudent/{stu.studentID}")" class="btn btn-info">details</a>
                         <a href="@($"detailsenrollment/{stu.studentID}")" class="btn btn-primary">enroll</a>
-                        <a href="" class="btn btn-warning">edit</a>
-                        <a href="" class="btn btn-danger">delete</a>
+                        <a href="@($"editstudent/{stu.studentID}")" class="btn btn-warning">edit</a>
+                        <a href="@($"deletestudent/{stu.studentID}")" class="btn btn-danger">delete</a>
                     </td>
                 </tr>
             } 

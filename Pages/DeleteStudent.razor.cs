@@ -8,19 +8,21 @@ using Microsoft.AspNetCore.Components;
 
 namespace TAS_ProgFrontEnd_72190339.Pages
 {
-    public partial class DetailStudent
+    public partial class DeleteStudent
     {
         [Parameter]
         public string id { get; set; }
 
         [Inject]
         public IStudentService StudentService { get; set; }
-        public Student Student { get; set; } = new Student();
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            id = id ?? "1";
-            Student = await StudentService.GetById(id);
+            await StudentService.Delete(id);
+            NavigationManager.NavigateTo("/studentpage");
         }
     }
 }
