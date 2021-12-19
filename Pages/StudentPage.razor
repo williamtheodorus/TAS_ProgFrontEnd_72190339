@@ -1,0 +1,40 @@
+@page "/studentpage"
+
+<h3>List of Student</h3>
+@if(Stud == null){
+    <div class="spinner"></div>
+}
+else
+{
+        
+    <a class="btn btn-link" href="" role="button">Create New</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nim</th>
+                <th>Nama Belakang</th>
+                <th>Nama Depan</th>
+                <th>Tanggal Masuk</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var stu in Stud)
+            {
+                <tr>
+                    <td>@stu.studentID</td>
+                    <td>@stu.lastName</td>
+                    <td>@stu.firstName</td>
+                    <td>@stu.enrollmentDate</td>
+                    <td>
+                        <a href="@($"detailsstudent/{stu.studentID}")" class="btn btn-info">details</a>
+                        <a href="@($"detailsenrollment/{stu.studentID}")" class="btn btn-primary">enroll</a>
+                        <a href="" class="btn btn-warning">edit</a>
+                        <a href="" class="btn btn-danger">delete</a>
+                    </td>
+                </tr>
+            } 
+        </tbody>
+    </table>
+}

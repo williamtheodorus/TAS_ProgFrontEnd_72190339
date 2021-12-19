@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TAS_ProgFrontEnd_72190339.Services;
 
 namespace TAS_ProgFrontEnd_72190339
 {
@@ -17,7 +18,10 @@ namespace TAS_ProgFrontEnd_72190339
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            var uri = new Uri("https://akademikbackend.azurewebsites.net");
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = uri });
+            builder.Services.AddScoped<IStudentService,StudentService>();
+            builder.Services.AddScoped<IEnrollmentService,EnrollmentService>();
 
             await builder.Build().RunAsync();
         }
